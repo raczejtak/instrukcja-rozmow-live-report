@@ -1,111 +1,95 @@
 <!doctype html>
-<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Instrukcja rozmów live report</title>
-<style>
-body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:#f8fafc;color:#0f172a;line-height:1.45}.wrap{max-width:980px;margin:0 auto;padding:32px 18px}h1{font-size:32px;margin:0 0 8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0}.card{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:16px}.big{font-size:26px;font-weight:800}.bad{color:#be123c}.ok{color:#047857}.warn{color:#b45309}pre{white-space:pre-wrap;background:#0f172a;color:#e5e7eb;border-radius:10px;padding:16px;overflow:auto}.bar{height:18px;background:#e2e8f0;border-radius:20px;overflow:hidden}.bar span{display:block;height:100%;background:#2563eb;width:64%}ul{padding-left:20px}.note{background:#fff7ed;border:1px solid #fed7aa;padding:14px;border-radius:10px}</style></head>
-<body><main class="wrap">
-<h1>Instrukcja rozmów - raport live</h1>
-<p>Aktualizacja: <b>21.05.2026, 12:42:36 Bali</b>. Raport jest publiczny i nie zawiera prywatnych rozmów ani CSV.</p>
-<div class="note"><b>Brutalna prawda:</b> kandydat działa szybciej i lepiej, ale nie jest jeszcze tip-top dla 9+30, bo 30 syntetycznych EN paczek ma za mało data pointów.</div>
-<div class="grid">
-<div class="card"><div class="big">8/39</div><div>paczki production_ready</div></div>
-<div class="card"><div class="big bad">31</div><div>paczki blocked</div></div>
-<div class="card"><div class="big ok">$0.000000</div><div>OpenAI koszt tego runu</div></div>
-<div class="card"><div class="big">29.0s</div><div>czas generowania 39 paczek</div></div>
-</div>
-<h2>Postęp prod-ready candidate 9+30</h2>
-<div class="bar"><span></span></div><p><b>64% / 100%</b>. Szybkość jest dobra. Jakość faktów jeszcze nie.</p>
-<h2>Poziom wypełnienia szkieletu</h2>
-<ul>
-<li>Realne CSV: zwykle <b>1987-2000 data pointów</b>, czyli gold.</li>
-<li>Syntetyczne EN: <b>40-44 data pointy</b>, czyli za mało wobec minimum 400.</li>
-<li>Cały szkielet jest renderowany, ale nie każda paczka ma wystarczająco dużo faktów.</li>
-<li>Zasada języka: PL output zostaje po polsku, EN output jest po angielsku. Ostatni skan nie znalazł polskich zdań w EN owner output.</li>
-</ul>
-<div class="grid">
-<div class="card"><div class="big">40-2000</div><div>data pointy zakres</div></div>
-<div class="card"><div class="big">492.3</div><div>średnia data pointów</div></div>
-<div class="card"><div class="big warn">30</div><div>paczki poniżej 400</div></div>
-</div>
-<h2>Co realnie poprawiono</h2>
-<ul>
-<li>Dodano 30 ultra realistycznych syntetycznych paczek EN.</li>
-<li>Run 39 paczek działa bez OpenAI w około 30 sekund.</li>
-<li>Dodano twarde liczenie data pointów: minimum 400, optimum 1000, gold 2000.</li>
-<li>Naprawiono mieszanie języka w outputach: EN ma iść po angielsku, PL po polsku.</li>
-<li>Podgląd lokalny pokazuje świeży timestamp i cały obecny run.</li>
-</ul>
-<h2>Bezpieczny przykład syntetyczny EN</h2>
-<pre># Conversation instructions for PixelNest Branding
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Instrukcja rozmów live report</title>
+  <style>
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:#f8fafc;color:#0f172a;line-height:1.45}
+    .wrap{max-width:980px;margin:0 auto;padding:32px 18px}
+    h1{font-size:32px;margin:0 0 8px}
+    h2{margin-top:30px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0}
+    .card{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:16px}
+    .big{font-size:26px;font-weight:800}
+    .bad{color:#be123c}.ok{color:#047857}.warn{color:#b45309}
+    pre{white-space:pre-wrap;background:#0f172a;color:#e5e7eb;border-radius:10px;padding:16px;overflow:auto}
+    .bar{height:18px;background:#e2e8f0;border-radius:20px;overflow:hidden}
+    .bar span{display:block;height:100%;background:#2563eb;width:68%}
+    ul{padding-left:20px}
+    .note{background:#fff7ed;border:1px solid #fed7aa;padding:14px;border-radius:10px}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Instrukcja rozmów - raport live</h1>
+  <p>Aktualizacja: <b>21.05.2026, 12:59:32 Bali</b>. Raport jest publiczny i nie zawiera prywatnych rozmów ani CSV.</p>
 
+  <div class="note">
+    <b>Brutalna prawda:</b> kandydat 9+30 nie jest jeszcze tip-top. Najważniejsza zmiana jest jednak dobra:
+    mamy już nano-first plan, który pokrywa cały szkielet i mieści się w celu kosztu.
+  </div>
 
+  <div class="grid">
+    <div class="card"><div class="big">8/39</div><div>paczki gotowe w ostatnim runie</div></div>
+    <div class="card"><div class="big bad">31</div><div>paczki zablokowane przez dane</div></div>
+    <div class="card"><div class="big ok">$0.2432</div><div>szacowany koszt nano-first na 1 biznes</div></div>
+    <div class="card"><div class="big">64</div><div>planowane nano calle na 1 biznes</div></div>
+  </div>
 
-# WHO THE ASSISTANT WRITES FOR
+  <h2>Postęp prod-ready candidate 9+30</h2>
+  <div class="bar"><span></span></div>
+  <p><b>68% / 100%</b>. Szybkość i koszt są na dobrej ścieżce. Brakuje realnego nano-run i podbicia słabych paczek EN do minimum 400 data pointów.</p>
 
+  <h2>Co realnie poprawiono</h2>
+  <ul>
+    <li>Dodano mapę <b>76 celów</b> dla GPT nano. Każda z 38 podsekcji ma teraz konkretne zadania do wydobycia faktów.</li>
+    <li>Dodano zasadę: najpierw surowe fakty, potem ładny tekst. To zmniejsza ryzyko pustych, generycznych instrukcji.</li>
+    <li>Dodano ranking dla pytań, przypomnień, propozycji, linków i materiałów: najlepsze, neutralne, słabe/do unikania.</li>
+    <li>Dodano plan grupowania: 76 celów po 10 celów w callu, 8 kawałków CSV, razem <b>64 calle nano</b> na biznes.</li>
+    <li>Testy potwierdzają koszt: <b>$0.2432</b> normalnie, <b>$0.7296</b> w retry worst-case. To mieści się w max $1.</li>
+    <li>Testy potwierdzają język: PL ma dawać PL, EN ma dawać EN.</li>
+  </ul>
 
-## Brand or person
+  <h2>Aktualny plan nano-first</h2>
+  <div class="grid">
+    <div class="card"><div class="big">76</div><div>cele szkieletu</div></div>
+    <div class="card"><div class="big">38</div><div>podsekcje pokryte</div></div>
+    <div class="card"><div class="big">14</div><div>cele z rankingiem konwersji</div></div>
+    <div class="card"><div class="big">2 fale</div><div>równoległe fale przy 63 requestach</div></div>
+  </div>
 
-What to enter from conversations:
-- **Brand or person name: PixelNest Branding.**
-- The assistant writes on behalf of this brand.
+  <pre>{
+  "model": "gpt-5-nano",
+  "serviceTier": "flex",
+  "reasoningEffort": "low",
+  "plannedCallsPerBusiness": 64,
+  "estimatedCostPerBusinessUsd": 0.2432,
+  "retryWorstCaseCostPerBusinessUsd": 0.7296,
+  "budgetStatus": "green_optimum"
+}</pre>
 
-How the assistant should respond:
-**The assistant represents PixelNest Branding.**
-Write calmly and clearly. Do not pretend to be a specific person.
+  <h2>Poziom wypełnienia szkieletu teraz</h2>
+  <ul>
+    <li>Realne CSV: zwykle <b>1987-2000 data pointów</b>, czyli gold.</li>
+    <li>Syntetyczne EN: <b>40-44 data pointy</b>, czyli za mało wobec minimum 400.</li>
+    <li>Cały szkielet jest renderowany, ale część paczek ma za mało faktów.</li>
+    <li>Nowy nano-first plan ma naprawić właśnie to: wydobyć więcej prawdziwych punktów danych na każdą sekcję.</li>
+  </ul>
 
+  <h2>Najbliższe kroki</h2>
+  <ol>
+    <li>Odpalić mały test GPT nano na jednej paczce PL i jednej EN.</li>
+    <li>Sprawdzić, czy nano oddaje konkretne data pointy, a nie ładny bełkot.</li>
+    <li>Jeśli smoke test przejdzie, puścić plan 64 calli na wybrane paczki i porównać wynik z obecnym szkieletem.</li>
+  </ol>
 
-## What the assistant should do
-
-What to enter from conversations:
-- Conversation goal: understand the customer's situation and the next step.
-- Information needed before the next step.
-
-How the assistant should respond:
-The assistant replies briefly, keeps the conversation organized, and does not guess missing details.
-Do not pretend to be the owner or a specialist.
-
-
-## When the customer asks who they are talking to
-
-What to enter from conversations:
-- The answer the brand uses when the customer asks who they are talking to.
-- If there is no clear pattern, use a calm neutral answer.
-
-How the assistant should respond:
-If the customer asks who they are talking to, answer:
-“Sure, I’ll answer briefly and help figure out what should happen next.”
-
-
-
-# WHAT THE COMPANY OFFERS
-
-
-## Main offer
-
-What to enter from conversations:
-- The offer, service, program, product, or category visible in the conversations.
-- If the name is unclear, use only the safe area of work.
-
-How the assistant should respond:
-The company helps in the area shown by the conversations.
-Do not invent an offer name if it is not certain.
-
-
-## What customers usually come with
-
-What to enter from conversations:
-- The most common customer problems.
-- The most common customer goals.
-- Phrases visible in customer messages.
-
-How the assistant should respond:
-Customers usually reach out when they want to:
-- understand whether the offer fits their situation;
-- get a simple answer to one specific question;
-- move to the next step without a long interview.
-
-
-## What the assistant should not promise</pre>
-<h2>Następny krok</h2>
-<p>Największy leverage: podbić syntetyczne i EN paczki z 40-44 data pointów do minimum 400, a potem przepuścić sentence audit. Dopiero wtedy można mówić o tip-top candidate dla 9+30.</p>
-</main></body></html>
+  <h2>Nie claimujemy jeszcze</h2>
+  <ul>
+    <li>Nie claimujemy 5000 prod-ready.</li>
+    <li>Nie claimujemy tip-top dla 9+30.</li>
+    <li>Nie claimujemy, że nano-first już wygenerował pełne instrukcje. Na razie plan i testy planu są gotowe.</li>
+  </ul>
+</main>
+</body>
+</html>
